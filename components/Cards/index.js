@@ -19,7 +19,6 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 const articleSection = document.querySelector(".cards-container");
-
 //console.log(articleSection);
 
 //make topicsList
@@ -33,49 +32,60 @@ const articleSection = document.querySelector(".cards-container");
 //         })
 //     }
 
-axios
-  .get("https://lambda-times-backend.herokuapp.com/topics")
-  .then(response => {
-    response.data.topics.forEach(item => {
-      axios
-        .get("https://lambda-times-backend.herokuapp.com/articles")
-        .then(response => {
-            console.log(response);
-          //console.log(`response.data.articles.${item}`);
-          response.item.forEach(CreateCard(`response.data.articles.${item}`));
-        });
-    });
-    return;
-  });
-
-//   followersArray.forEach(item => {
-//     let followerUrl = `https://api.github.com/users/${item}`;
-//     //console.log(followerUrl);
-//     axios
-//       .get(followerUrl)
-//       .then(response => {
-//         //console.log(response.data);
-//         CreateCard(response);
-//       })
-//       .catch(error => {
-//         console.log("The GitHub data was not returned", error);
-//       });
-//   });
+// function topicFilter(objects, topic){
+//   objects.filter(objects.data.articles.topic ==)
+// }
 
 // axios
-//   .get("https://lambda-times-backend.herokuapp.com/articles")
+//   .get("https://lambda-times-backend.herokuapp.com/topics")
 //   .then(response => {
-//     console.log(response.data.articles.javascript);
-//     console.log(list)[0];
-//     list.forEach(element => {
-//       console.log(element);
-//       console.log("working");
-//     });
-//     // CreateCard(response);
-//   })
-//   .catch(error => {
-//     console.log("The data was not returned", error);
+//     response.data.topics.forEach(item => {
+//         console.log(item);
+//       axios
+//         .get("https://lambda-times-backend.herokuapp.com/articles")
+//         .then(response => {
+//             console.log(response.data.articles.bootstrap);
+//             console.log(response.data.articles.item);
+//             console.log(response);
+//let newVar =
+//response.forEach(){
+
+//}
+
+//let list = response.filter(word => word.data.articles == item);
+//console.log(list);
+//console.log(response.data.articles +`.${item}`);
+//let objPath = response.data.articles +`.${item}`
+//objPath.forEach(CreateCard(`response.data.articles.${item}`));
+//       });
 //   });
+//   return;
+// });
+
+
+axios
+  .get("https://lambda-times-backend.herokuapp.com/articles")
+  .then(response => {
+    console.log(response);
+    response.data.articles.bootstrap.forEach(item => {
+      CreateCard(item);
+    });
+    response.data.articles.javascript.forEach(item => {
+      CreateCard(item);
+    });
+    response.data.articles.jquery.forEach(item => {
+      CreateCard(item);
+    });
+    response.data.articles.node.forEach(item => {
+      CreateCard(item);
+    });
+    response.data.articles.technology.forEach(item => {
+      CreateCard(item);
+    });
+  })
+  .catch(error => {
+    console.log("The ARTICLES data was not returned", error);
+  });
 
 function CreateCard(obj) {
   //create elements
@@ -93,12 +103,9 @@ function CreateCard(obj) {
   imgCont.classList.add("img-container");
 
   //set textContent/attributes
-  //wholeCard;
   headline.textContent = obj.headline;
-  author;
-  imgCont;
-  img;
-  byAuthorSpan;
+  img.src = obj.authorPhoto;
+  byAuthorSpan.textContent = `By ${obj.authorName}`;
 
   //create structure
   articleSection.appendChild(wholeCard);
