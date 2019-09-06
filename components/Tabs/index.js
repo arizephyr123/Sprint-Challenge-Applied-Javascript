@@ -8,16 +8,6 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-
-//for reference
-// arr.forEach(item => {
-//     let listItems = document.createElement("li");
-//     listItems.textContent = item;
-//     listWrap.appendChild(listItems);
-//     return listWrap;
-//   });
-
-
 const topics = document.querySelector(".topics");
 //console.log(topics);
 
@@ -31,7 +21,7 @@ axios
     topicsArray.forEach(item =>{
         //console.log(item);
         createTab(item);
-        //return something???
+        //return topicsArray
     })
     //return something???
   })
