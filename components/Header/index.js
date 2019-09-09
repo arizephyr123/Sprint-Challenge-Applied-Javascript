@@ -34,4 +34,4 @@ function Header(dateParam, h1, tempParam) {
     return headerDiv
 }
 
-Header("SEPTEMBER 6, 2019", "Lambda Times", "78°");
+Header("SMARCH 28, 2019", "Lambda Times", "98°");
